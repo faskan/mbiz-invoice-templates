@@ -204,7 +204,7 @@ attributions:
                     </div>-->
                     <div class="col company-details">
                         <h2 class="name">
-                            <a th:unless="${#strings.isEmpty(invoice.from.website)}" th:href="${invoice.from.website}" th:text="${invoice.from.name}"></a>
+                    <!--  <a th:unless="${#strings.isEmpty(invoice.from.website)}" th:href="${invoice.from.website}" th:text="${invoice.from.name}"></a> -->
                             <span th:if="${#strings.isEmpty(invoice.from.website)}" th:text="${invoice.from.name}">Company Name</span>
                         </h2>
                         <div th:if="${not #strings.isEmpty(invoice.from.address)}">
