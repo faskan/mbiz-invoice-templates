@@ -197,14 +197,9 @@ attributions:
         <div>
             <header>
                 <div class="row">
-                    <!--<div class="logo-container">
-                        <a class="logo" th:if="${not #strings.isEmpty(invoice.from.logoFile)}" th:href="${invoice.from.website}">
-                            <img th:src="${invoice.from.logoFile}" alt="Business Logo" />
-                        </a>
-                    </div>-->
+                   
                     <div class="col company-details">
                         <h2 class="name">
-                    <!--  <a th:unless="${#strings.isEmpty(invoice.from.website)}" th:href="${invoice.from.website}" th:text="${invoice.from.name}"></a> -->
                             <span th:if="${#strings.isEmpty(invoice.from.name)}" th:text="${invoice.from.name}">Company Name</span>
                         </h2>
                         <div th:if="${not #strings.isEmpty(invoice.from.address)}">
