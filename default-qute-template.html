@@ -2,13 +2,38 @@
 <html>
     <head>
         <style>
-            body {
-                background-color: linen;
+            @page {
+                @top-right {
+                    content: "Page " counter(page) " of " counter(pages);
+                    font-family: sans-serif;
+                    padding-right: 15px;
+                }
+            }
+            #invoice{
+                padding: 0px;
+            }
+            .invoice {
+                position: relative;
+                padding: 15px
             }
 
-            h1 {
-                color: maroon;
-                margin-left: 40px;
+            .invoice header {
+                padding: 10px 0;
+                margin-bottom: 20px;
+                border-bottom: 1px solid #3989c6
+            }
+
+            .invoice .company-details {
+                text-align: left;
+                float: left;
+            }
+            .invoice .invoice-header {
+                text-align: right
+            }
+
+            .invoice .company-details .name {
+                margin-top: 0;
+                margin-bottom: 0
             }
         </style>
     </head>
@@ -17,14 +42,15 @@
             <div class="invoice">
                 <div>
                     <header>
-                        <div>
-                            <div>
+                        <div class="row">
+                            <div class="col company-details">
                                 <h2>
                                     <span>{invoice.from.name or 'My Company Name'}</span>
                                 </h2>
                             </div>
                             <div>{invoice.from.address or 'My Company Address'}</div>
                             <div>{invoice.from.vatNumber or 'My VAT number'}</div>
+                            <div><a href="|mailto:{invoice.from.email}|">{invoice.from.email}</a></div>
                         </div>
                         <h1>{invoice.id}</h1>
                     </header>
