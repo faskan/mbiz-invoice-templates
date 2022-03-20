@@ -20,11 +20,13 @@
                         <div>
                             <div>
                                 <h2>
-                                    <span>Hello {invoice.from.name}</span>
+                                    <span>{invoice.from.name or 'My Company Name'}</span>
                                 </h2>
                             </div>
+                            <div>{invoice.from.address or 'My Company Address'}</div>
+                            <div>{invoice.from.vatNumber or 'My VAT number'}</div>
                         </div>
-                        <h1>{invoice.from.name or 'Some Name'}{invoice.attention or 'Some attention'}{invoice.id}</h1>
+                        <h1>{invoice.id}</h1>
                     </header>
                     <main></main>
                     <footer>
