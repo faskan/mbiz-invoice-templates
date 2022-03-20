@@ -52,9 +52,31 @@
                             <div>{invoice.from.vatNumber or 'My VAT number'}</div>
                             <div><a href="|mailto:{invoice.from.email}|">{invoice.from.email}</a></div>
                         </div>
-                        <h1>{invoice.id}</h1>
+                        <div class="col invoice-header">
+                            <h1 class="invoice-id">INVOICE</h1>
+                        </div>
+                        <div style="clear: both;"></div>
                     </header>
-                    <main></main>
+                    <main>
+                        <div class="row contacts">
+                            <div class="col invoice-to">
+                                <div class="text-gray-light">INVOICE TO:</div>
+                                <h2 class="to">{invoice.to.name}</h2>
+                                <div class="address">
+                                    {invoice.to.address or 'Client Address'}
+                                </div>
+                                <div>
+                                    VAT Number: {invoice.to.vatNumber or 'Client VAT Number'}
+                                </div>
+                                <div class="email"><a href="|mailto:{invoice.to.email}|">{invoice.to.email}</a></div>
+                            </div>
+                            <div class="col invoice-details">
+                                <div class="date">Date of Invoice: {invoice.date}</div>
+                                <div class="date">INVOICE# {invoice.id}</div>
+                                <div class="date">Due Date: {invoice.due}</div>
+                            </div>
+                        </div>
+                    </main>
                     <footer>
                         Invoice was created on a computer and is valid without the signature and seal.
                     </footer>
