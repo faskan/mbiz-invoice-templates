@@ -192,7 +192,25 @@
             <div class="invoice">
                 <div>
                     <header>
-                        <h1>{invoice.id}</h1>
+                        <div class="row">
+                   
+                            <div class="col company-details">
+                                <h2 class="name">
+                                    <span>{invoice.from.name or 'My Company Name'}</span>
+                                </h2>
+                                <div>
+                                    {invoice.from.address or 'My Company Address'}
+                                </div>
+                                <div>
+                                    VAT Number: {invoice.from.vatNumber}
+                                </div>
+                                <div class="email"><a th:href="|mailto:{invoice.from.email}|">{invoice.from.email}</a></div>
+                            </div>
+                            <div class="col invoice-header">
+                                <h1 class="invoice-id">INVOICE</h1>
+                            </div>
+                        </div>
+                        <div style="clear: both;"></div>
                     </header>
                     <main></main>
                     <footer>
