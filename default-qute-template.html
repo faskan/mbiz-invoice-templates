@@ -9,9 +9,11 @@
                     padding-right: 15px;
                 }
             }
+
             #invoice{
                 padding: 0px;
             }
+
             .invoice {
                 position: relative;
                 padding: 15px
@@ -34,6 +36,146 @@
             .invoice .company-details .name {
                 margin-top: 0;
                 margin-bottom: 0
+            }
+
+            .invoice .contacts {
+                margin-bottom: 20px
+            }
+
+            .invoice .invoice-to {
+                text-align: left;
+                float: left;
+            }
+
+            .invoice .invoice-to .to {
+                margin-top: 0;
+                margin-bottom: 0
+            }
+
+            .invoice .invoice-details {
+                text-align: right;
+                float: right
+            }
+
+            .invoice .invoice-details .invoice-id {
+                margin-top: 0;
+                color: #3989c6
+            }
+
+            .invoice main {
+                padding-bottom: 50px
+            }
+
+            .invoice main .thanks {
+                margin-top: -100px;
+                font-size: 2em;
+                margin-bottom: 50px
+            }
+
+            .invoice main .notices {
+                padding-left: 6px;
+                border-left: 6px solid #3989c6
+            }
+
+            .invoice main .notices .notice {
+                font-size: 1.2em
+            }
+
+            .invoice table {
+                width: 100%;
+                border-collapse: collapse;
+                border-spacing: 0;
+                margin-bottom: 20px
+            }
+
+            .invoice table td,.invoice table th {
+                padding: 15px;
+                background: #eee;
+                border-bottom: 1px solid #fff
+            }
+
+            .invoice table th {
+                white-space: nowrap;
+                font-weight: 400;
+                font-size: 16px
+            }
+
+            .invoice table td h3 {
+                margin: 0;
+                font-weight: 400;
+                color: #3989c6;
+                font-size: 1.2em
+            }
+
+            .invoice table .qty,.invoice table .total,.invoice table .unit {
+                text-align: right;
+                font-size: 1.2em
+            }
+
+            .invoice table .no {
+                color: #fff;
+                font-size: 1.6em;
+                background: #3989c6
+            }
+
+            .invoice table .unit {
+                background: #ddd
+            }
+
+            .invoice table .total {
+                background: #3989c6;
+                color: #fff
+            }
+
+            .invoice table tbody tr:last-child td {
+                border: none
+            }
+
+            .invoice table tfoot td {
+                background: 0 0;
+                border-bottom: none;
+                white-space: nowrap;
+                text-align: right;
+                padding: 10px 20px;
+                font-size: 1.2em;
+                border-top: 1px solid #aaa
+            }
+
+            .invoice table tfoot tr:first-child td {
+                border-top: none
+            }
+
+            .invoice table tfoot tr:last-child td {
+                color: #3989c6;
+                font-size: 1.4em;
+                border-top: 1px solid #3989c6
+            }
+
+            .invoice table tfoot tr td:first-child {
+                border: none
+            }
+
+            .invoice footer {
+                width: 100%;
+                text-align: center;
+                color: #777;
+                border-top: 1px solid #aaa;
+                padding: 8px 0
+            }
+            .invoice {
+                font-size: 14px;
+                line-height: 1.4;
+                font-family: sans-serif;
+            }
+            a.logo {
+                display: inline-block;
+                text-decoration: none;
+            }
+            tr, tfoot {
+                page-break-inside: avoid;
+            }
+            div.logo-container {
+                float: left;
             }
         </style>
     </head>
@@ -76,6 +218,50 @@
                                  <div class="date">Due Date: {invoice.due or ''}</div>
                              </div>
                          </div>
+                        <table border="0" cellspacing="0" cellpadding="0">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th class="text-left">Description</th>
+                                <th class="text-right">Unit Price</th>
+                                <th class="text-right">Quantity</th>
+                                <th class="text-right">Total</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {#each invoice.items}
+                                <tr>
+                                    <td class="no">{it_count}</td>
+                                    <td class="text-left">{it.description or ''}</td>
+                                    <td class="unit">{it.unitPrice or '0'}</td>
+                                    <td class="qty">{it.quantity or '0'}</td>
+                                    <td class="total">{it.totalPrice or '0'}</td>
+                                </tr>
+                            {/each}
+                            </tbody>
+                            <tfoot>
+                            <tr>
+                                <td colspan="2"></td>
+                                <td colspan="2">Subtotal</td>
+                                <td>{invoice.subTotal or '0'}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"></td>
+                                <td colspan="2">Tax {invoice.taxRate or '0'}%</td>
+                                <td>{invoice.taxAmount or '0'}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"></td>
+                                <td colspan="2">Grand Total</td>
+                                <td>{invoice.total or '0'}</td>
+                            </tr>
+                            </tfoot>
+                        </table>
+                        <div class="thanks">Thank you!</div>
+                        <div class="notices">
+                            <div>NOTICE:</div>
+                            <div class="notice">{invoice.notice or ''}</div>
+                        </div>
                     </main>
                     <footer>
                         Invoice was created on a computer and is valid without the signature and seal.
