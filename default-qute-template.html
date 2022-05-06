@@ -192,10 +192,10 @@
                 <div class="row">
                     <div class="col company-details">
                         <h2>
-                            <span>{invoice.from.name or 'My Company Name'}</span>
+                            <span>{invoice.from.name or 'Company Name'}</span>
                         </h2>
-                        <div>{invoice.from.address or 'My Company Address'}</div>
-                        <div>{invoice.from.vatNumber or 'My VAT number'}</div>
+                        <div>{invoice.from.address or 'Company Address'}</div>
+                        <div>{invoice.from.vatNumber or 'VAT number'}</div>
                         <div><a href="|mailto:{invoice.from.email}|">{invoice.from.email}</a></div>
                     </div>
                 </div>
@@ -205,6 +205,7 @@
                 <div style="clear: both;"></div>
             </header>
             <main>
+                <br/>
                 <div class="row contacts">
                     <div class="col invoice-to">
                         <div class="text-gray-light">INVOICE TO:</div>
@@ -224,6 +225,7 @@
                     </div>
                 </div>
                 <div style="clear: both;"></div>
+                <br/>
                 <table border="0" cellspacing="0" cellpadding="0">
                     <thead>
                     <tr>
@@ -265,8 +267,8 @@
                 </table>
                 <div class="thanks">Thank you!</div>
                 <div class="notices">
-                    <div>NOTICE:</div>
-                    <div class="notice">{invoice.notice or ''}</div>
+                    <div>Notes:</div>
+                    <div class="notice">{invoice.paymentTerms or ''}</div>
                 </div>
             </main>
             <footer>
